@@ -1,0 +1,29 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://ideabulut.com
+title: Idea Bulut Solutions
+email: tugce@ideabulut.solutions
+author: Idea Bulut Solutions
+description: > # "Write an awesome description for your new site here. 
+  Website for the Idea Bulut Solutions
+copyright: 'Copyright &copy; 2023 Idea Bulut Solutions. All Rights Reserved.'
+
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# ----------------------- #
+#   3rd Party Settings    #
+# ----------------------- #
+
+social:
+  - title: github
+    url: https://github.com/IdeaBulutSolutions
+  - title: linkedin
+    url: https://www.linkedin.com/company/idea-bulut-solutions
