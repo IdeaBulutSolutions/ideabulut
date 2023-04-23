@@ -1,8 +1,8 @@
 ---
 layout: default
-img: devops.jpg
+img: consultancy.jpg
 category: Services
-title: DevOps Consultancy and Training
+title: Salesforce Consultancy
 description: |
 ---
-Our DevOps consultancy and training services help businesses implement the latest DevOps practices and methodologies to streamline their software development processes. Our experts have extensive experience in DevOps and can help you design, implement, and optimize your DevOps strategy. We also offer training programs to help your team develop the skills they need to succeed in a DevOps environment.
+  At Idea Bulut Solutions, we offer Salesforce consultancy services that help businesses get the most out of their Salesforce investment. Our team of certified Salesforce consultants works closely with you to understand your business needs, and we develop a customized plan to help you achieve your goals. Whether you need help with Salesforce customization, integration, or migration, we have the expertise to get the job done.
