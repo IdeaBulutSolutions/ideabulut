@@ -1,0 +1,112 @@
+---
+layout: default
+title: Services
+permalink: /services/
+description: "Salesforce consultancy with deep DevOps expertise — DevOps consultancy, release management, custom app development and managed packages, plus support retainers and a full or part-time release manager. Specialist Copado delivery available too."
+jsonld: >
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Do you work remotely or on-site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Both. We are based in Spain and Turkey, deliver remotely across the EU, take on on-site work in Spain, and work with US clients." } },
+      { "@type": "Question", "name": "How do the support hours work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Support is a monthly hours-block retainer (10, 20 or 40 hours per month). What counts toward hours, response expectations and whether unused hours roll over are confirmed when we scope your plan." } },
+      { "@type": "Question", "name": "Do you only work with Copado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. We are tool-agnostic — Salesforce CLI, GitHub Actions, Copado or Gearset. Copado is one specialism among several; we adapt to your stack rather than forcing a tool." } }
+    ]
+  }
+---
+
+<header class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Services</span>
+    <h1>Salesforce services</h1>
+    <p class="page-hero__subtitle">Specialist delivery from a Salesforce consultancy with deep DevOps expertise — DevOps consultancy, release management, custom app development and managed packages.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="{% if site.discovery_booking_url != '' %}{{ site.discovery_booking_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}"{% if site.discovery_booking_url != '' %} target="_blank" rel="noopener"{% endif %}>Book a free 15-min chat</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid--2">
+      {%- for s in site.data.services -%}
+      {%- if s.group == "salesforce" %}
+      <article class="card" id="{{ s.id }}">
+        {% include icon.html name=s.icon %}
+        <h2 style="font-size:1.4rem">{{ s.title }}</h2>
+        <p>{{ s.summary }}</p>
+        <ul>
+          {%- for p in s.points %}
+          <li>{{ p }}</li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endif -%}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Copado specialism — full detail on its own page -->
+<section class="section--tight section--soft">
+  <div class="container">
+    <div class="section__head">
+      <h2>Specialist Copado delivery</h2>
+      <p>Implementation, customization, release engineering, custom app development, training and a fixed-price pipeline health check.</p>
+    </div>
+    <div class="text-center">
+      <a class="btn btn--ghost" href="{{ '/copado/' | relative_url }}">Explore Copado services</a>
+    </div>
+  </div>
+</section>
+
+<!-- Engagement models -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <h2>Engagement models</h2>
+      <p>Flexible ways to work with us, whether you need ongoing support or embedded release ownership.</p>
+    </div>
+    <div class="grid grid--2">
+      {%- for s in site.data.services -%}
+      {%- if s.group == "engagement" %}
+      <article class="card" id="{{ s.id }}">
+        {% include icon.html name=s.icon %}
+        <h2 style="font-size:1.4rem">{{ s.title }}</h2>
+        <p>{{ s.summary }}</p>
+        <ul>
+          {%- for p in s.points %}
+          <li>{{ p }}</li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endif -%}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="section__head"><h2>Frequently asked questions</h2></div>
+    <div class="faq">
+      <details class="faq__item">
+        <summary>Do you work remotely or on-site?</summary>
+        <p>Both. We're based in Spain and Turkey, deliver remotely across the EU, take on on-site work in Spain, and work with US clients.</p>
+      </details>
+      <details class="faq__item">
+        <summary>How do the support hours work?</summary>
+        <p>Support is a monthly hours-block retainer (10 / 20 / 40 hours per month). What counts toward hours, response expectations and whether unused hours roll over are confirmed when we scope your plan.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you only work with Copado?</summary>
+        <p>No — we're tool-agnostic: Salesforce CLI, GitHub Actions, Copado or Gearset. Copado is one specialism among several, and we adapt to your stack rather than forcing a tool.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% include cta.html heading="Not sure which service fits?" text="Book a free 15-minute Discovery Chat and we'll point you to the right one — or tell you honestly if we're not the right fit." %}

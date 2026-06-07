@@ -1,33 +1,37 @@
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#home">Home</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <p class="copyright text-muted small">{{ site.copyright }}</p>
-            </div>
-            <div class="col-md-4">
-                {{ site.credits }}
-            </div>
-            <div class="col-md-5">
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <img class="brand__logo" src="{{ '/img/ideabulut-logo.png' | relative_url }}" width="36" height="36" alt="Idea Bulut Solutions logo">
+      <p>Salesforce consultancy with deep DevOps expertise — release management, custom app development and managed packages. Based in Spain and Turkey, working remotely across the EU and with US clients.</p>
     </div>
+
+    <nav class="site-footer__nav" aria-label="Footer">
+      <h2 class="site-footer__heading">Site</h2>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/services/' | relative_url }}">Services</a></li>
+        <li><a href="{{ '/copado/' | relative_url }}">Copado</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        <li><a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__connect">
+      <h2 class="site-footer__heading">Connect</h2>
+      <ul>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        {%- for s in site.social %}
+        <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label | default: s.title }}</a></li>
+        {%- endfor %}
+        {%- if site.toolbelt_exchange_url and site.toolbelt_exchange_url != "" %}
+        <li><a href="{{ site.toolbelt_exchange_url }}" target="_blank" rel="noopener">Toolbelt on the DevOps Exchange</a></li>
+        {%- endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__legal">
+    <p>&copy; {{ "now" | date: "%Y" }} {{ site.copyright }}. All rights reserved.</p>
+  </div>
 </footer>

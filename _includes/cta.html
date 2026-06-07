@@ -1,0 +1,31 @@
+{%- comment -%}
+  Reusable booking CTA band.
+  Params (all optional):
+    include.heading   — heading text
+    include.text      — supporting line
+    include.compact   — "true" for a slimmer inline version
+  Behaviour: primary button = free Discovery Chat (or /contact/ if URL not set yet).
+  Secondary "paid consultation" link only appears once consultation_booking_url is set (R2).
+{%- endcomment -%}
+{%- if site.discovery_booking_url and site.discovery_booking_url != "" -%}
+  {%- assign discovery = site.discovery_booking_url -%}
+  {%- assign discovery_ext = true -%}
+{%- else -%}
+  {%- assign discovery = "/contact/" | relative_url -%}
+  {%- assign discovery_ext = false -%}
+{%- endif -%}
+
+<section class="cta{% if include.compact %} cta--compact{% endif %}" aria-labelledby="cta-heading">
+  <div class="container cta__inner">
+    <div>
+      <h2 class="cta__heading" id="cta-heading">{{ include.heading | default: "Book a free 15-minute Discovery Chat" }}</h2>
+      <p class="cta__text">{{ include.text | default: "Tell us what's blocking your releases. We'll tell you whether — and how — we can help. No pitch, no obligation." }}</p>
+    </div>
+    <div class="cta__actions">
+      <a class="btn btn--primary btn--lg" href="{{ discovery }}"{% if discovery_ext %} target="_blank" rel="noopener"{% endif %}>Book a free 15-min chat</a>
+      {%- if site.consultation_booking_url and site.consultation_booking_url != "" %}
+      <a class="btn btn--ghost" href="{{ site.consultation_booking_url }}" target="_blank" rel="noopener">Book a paid consultation</a>
+      {%- endif %}
+    </div>
+  </div>
+</section>

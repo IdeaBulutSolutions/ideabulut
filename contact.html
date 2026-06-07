@@ -1,0 +1,127 @@
+---
+layout: default
+title: Contact
+permalink: /contact/
+description: "Book a free 15-minute Discovery Chat with Idea Bulut Solutions, or send an enquiry about Salesforce and Copado DevOps work. Based in Spain and Turkey, working across the EU and with US clients."
+---
+
+<header class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1>Let's talk about your release pipeline</h1>
+    <p class="page-hero__subtitle">Book a free 15-minute Discovery Chat, or send us a message. No pitch, no obligation — we'll tell you honestly whether we can help.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary btn--lg" href="{% if site.discovery_booking_url != '' %}{{ site.discovery_booking_url }}{% else %}#contact-form{% endif %}"{% if site.discovery_booking_url != '' %} target="_blank" rel="noopener"{% endif %}>Book a free 15-min Discovery Chat</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid--2" style="align-items:start">
+
+      <!-- ============ Ready to skip the chat? (paid consultation) ============ -->
+      <div>
+        <h2>Ready to skip the chat?</h2>
+        <p>Book a 60-minute paid consultation over Google Meet and we'll dig straight into your pipeline — no Discovery Chat first.</p>
+        {%- if site.consultation_booking_url and site.consultation_booking_url != "" %}
+        <a class="btn btn--soft btn--lg" href="{{ site.consultation_booking_url }}" target="_blank" rel="noopener">Book a 60-min consultation</a>
+        {%- else %}
+        <div class="notice">Consultation booking link coming soon. Set <code>consultation_booking_url</code> in <code>_config.yml</code>.</div>
+        {%- endif %}
+      </div>
+
+      <!-- ============ Contact form ============ -->
+      <div>
+        <h2>Or send a message</h2>
+
+        {%- if site.apps_script_url == "" %}
+        <div class="notice">The form endpoint isn't configured yet. Set <code>apps_script_url</code> (and optionally <code>turnstile_site_key</code>) in <code>_config.yml</code> to activate submissions. The form below is fully built and ready.</div>
+        {%- endif %}
+
+        {%- comment -%}
+          IMPORTANT (lead capture): the deployed Code.gs rejects any submission without a
+          valid Cloudflare Turnstile token. The form below only renders the Turnstile widget
+          when `turnstile_site_key` is set, and the JS never blocks submit on a missing widget,
+          so the page degrades gracefully. But for rows to actually land in the Leads sheet,
+          the captcha check in Code.gs must EITHER be live (matching site + secret keys
+          configured) OR temporarily disabled — otherwise the form returns success and writes
+          no row. See apps-script/Code.gs.
+        {%- endcomment -%}
+        <form class="form" id="contact-form" action="{{ site.apps_script_url }}" method="POST" novalidate>
+          <!-- Honeypot: real users never see or fill this -->
+          <div class="form__hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form__grid">
+            <div class="form__row">
+              <label for="name">Name <span class="req">*</span></label>
+              <input type="text" id="name" name="name" required maxlength="120" autocomplete="name">
+            </div>
+            <div class="form__row">
+              <label for="email">Work email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required maxlength="160" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__row">
+              <label for="company">Company <span class="req">*</span></label>
+              <input type="text" id="company" name="company" required maxlength="120" autocomplete="organization">
+            </div>
+            <div class="form__row">
+              <label for="service">What's it about?</label>
+              <select id="service" name="service">
+                <option value="">Select a service…</option>
+                <option>Salesforce DevOps Consultancy</option>
+                <option>Salesforce Release Management</option>
+                <option>Salesforce App Development</option>
+                <option>Copado Release Engineering</option>
+                <option>Copado Customization</option>
+                <option>Copado Custom App Development</option>
+                <option>Copado Pipeline Health Check</option>
+                <option>Copado Implementation</option>
+                <option>Copado Training</option>
+                <option>Project-Based Engagement</option>
+                <option>Release Manager (full or part time)</option>
+                <option>Support &amp; Retainer</option>
+                <option>Toolbelt</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <label for="message">Message <span class="req">*</span></label>
+            <textarea id="message" name="message" required maxlength="2000" placeholder="What's blocking your releases? What would a good outcome look like?"></textarea>
+          </div>
+
+          {%- if site.turnstile_site_key and site.turnstile_site_key != "" %}
+          <div class="form__row">
+            <div class="cf-turnstile" data-sitekey="{{ site.turnstile_site_key }}"></div>
+          </div>
+          {%- endif %}
+
+          <div class="form__row form__consent">
+            <input type="checkbox" id="consent" name="consent" value="yes" required>
+            <label for="consent">I consent to Idea Bulut Solutions storing and processing my details to respond to this enquiry, as described in the <a href="{{ '/privacy-policy/' | relative_url }}">privacy policy</a>. <span class="req">*</span></label>
+          </div>
+
+          <div class="form__row">
+            <button type="submit" class="btn btn--primary btn--lg" id="contact-submit">Send message</button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <p class="form-note">We only use your details to reply to this enquiry. No newsletter, no sharing.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{%- if site.turnstile_site_key and site.turnstile_site_key != "" %}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{%- endif %}

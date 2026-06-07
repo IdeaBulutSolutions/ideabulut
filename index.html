@@ -1,5 +1,146 @@
 ---
 layout: default
 title: Idea Bulut Solutions
-subTitle: Welcome to Idea Bulut Solutions
+description: "Salesforce consultancy with deep DevOps expertise — release management, custom app development and managed packages. Based in Spain and Turkey, working remotely across the EU and with US clients."
+image: /img/ideabulut-logo.png
 ---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow">Salesforce Consultancy</span>
+      <h1>Salesforce consultancy with deep DevOps expertise</h1>
+      <p class="lead">We help Salesforce teams ship faster and safer: DevOps consultancy, release management, custom app development, and managed packages. Based in Spain and Turkey, working remotely across the EU and with US clients.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="{% if site.discovery_booking_url != '' %}{{ site.discovery_booking_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}"{% if site.discovery_booking_url != '' %} target="_blank" rel="noopener"{% endif %}>Book a free 15-min chat</a>
+        <a class="btn btn--ghost btn--lg" href="{{ '/services/' | relative_url }}">See what we do</a>
+      </div>
+      <p class="hero__note">Free, no-obligation Discovery Chat over Google Meet. Tell us what's blocking your releases.</p>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Salesforce release pipeline: code and test flow safely through to a live cloud deployment" font-family="Inter, system-ui, sans-serif">
+        <defs>
+          <linearGradient id="ibflow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#1466d6"/><stop offset="1" stop-color="#12b3a3"/>
+          </linearGradient>
+          <marker id="ibarrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M1 1 L8 5 L1 9" fill="none" stroke="#12b3a3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <!-- panel -->
+        <rect x="16" y="24" width="448" height="248" rx="22" fill="#ffffff" stroke="#e8edf4"/>
+
+        <!-- header -->
+        <text x="40" y="66" font-size="15" font-weight="700" fill="#0c1b2a">Release pipeline</text>
+        <rect x="302" y="50" width="136" height="26" rx="13" fill="#e7f7f5"/>
+        <circle cx="320" cy="63" r="4" fill="#12b3a3"/>
+        <text x="330" y="67" font-size="11" font-weight="600" fill="#0e8f83">All checks passed</text>
+
+        <!-- flow arrows between each stage (even ~12px clearance both sides) -->
+        <path d="M126 168 H146" stroke="url(#ibflow)" stroke-width="2.5" fill="none" stroke-linecap="round" marker-end="url(#ibarrow)"/>
+        <path d="M230 168 H250" stroke="url(#ibflow)" stroke-width="2.5" fill="none" stroke-linecap="round" marker-end="url(#ibarrow)"/>
+        <path d="M334 168 H352" stroke="url(#ibflow)" stroke-width="2.5" fill="none" stroke-linecap="round" marker-end="url(#ibarrow)"/>
+
+        <!-- stage 1: Code -->
+        <rect x="54" y="141" width="60" height="54" rx="13" fill="#eef4fe" stroke="#1466d6" stroke-width="1.6"/>
+        <path d="M76 159 L69 168 L76 177 M92 159 L99 168 L92 177 M87 157 L81 179" fill="none" stroke="#1466d6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="84" y="190" font-size="11" font-weight="700" fill="#0d4aa3" text-anchor="middle">Code</text>
+
+        <!-- stage 2: Test -->
+        <rect x="158" y="141" width="60" height="54" rx="13" fill="#eef4fe" stroke="#1466d6" stroke-width="1.6"/>
+        <circle cx="188" cy="165" r="11" fill="none" stroke="#1466d6" stroke-width="2.2"/>
+        <path d="M183 165 l4 4 l7 -8" fill="none" stroke="#1466d6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="188" y="190" font-size="11" font-weight="700" fill="#0d4aa3" text-anchor="middle">Test</text>
+
+        <!-- stage 3: Deploy (launch) -->
+        <rect x="262" y="141" width="60" height="54" rx="13" fill="#e7f7f5" stroke="#12b3a3" stroke-width="1.6"/>
+        <path d="M285 157 L306 168 L285 179 Z" fill="#0e8f83"/>
+        <text x="292" y="190" font-size="11" font-weight="700" fill="#0e8f83" text-anchor="middle">Deploy</text>
+
+        <!-- stage pass badges -->
+        <circle cx="114" cy="146" r="9" fill="#12b3a3"/>
+        <path d="M109 146 l3 3 l6 -7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="218" cy="146" r="9" fill="#12b3a3"/>
+        <path d="M213 146 l3 3 l6 -7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- cloud (live deployment) -->
+        <path d="M376 188 C367 188 360 181 360 173 C360 165 367 158 375 159 C378 148 388 141 399 141 C411 141 421 150 422 161 C430 161 436 168 436 176 C436 183 431 188 425 188 Z" fill="#e7f7f5" stroke="#12b3a3" stroke-width="1.6"/>
+        <text x="398" y="170" font-size="12" font-weight="700" fill="#0e8f83" text-anchor="middle">Live</text>
+        <circle cx="430" cy="186" r="10" fill="#12b3a3" stroke="#ffffff" stroke-width="2"/>
+        <path d="M425 186 l3 3 l6 -7" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- reassurance caption -->
+        <text x="240" y="238" font-size="13" font-weight="600" fill="#6b7886" text-anchor="middle">Ship faster, with confidence</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Why teams bring us in — deep expertise first -->
+<section class="section section--tight section--soft">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Why teams bring us in</p>
+      <h2>Deep expertise, tool-agnostic delivery</h2>
+    </div>
+    <div class="grid grid--2">
+      <article class="card">
+        {% include icon.html name="graduation" %}
+        <h3>Deep Salesforce &amp; DevOps expertise</h3>
+        <p>12+ years in the Salesforce ecosystem behind every engagement — senior, hands-on delivery from day one.</p>
+      </article>
+      <article class="card">
+        {% include icon.html name="pipeline" %}
+        <h3>Tool-agnostic release management</h3>
+        <p>We adapt to your stack — Salesforce CLI, GitHub Actions, Copado or Gearset — rather than forcing a tool.</p>
+      </article>
+      <article class="card">
+        {% include icon.html name="cloud-code" %}
+        <h3>Multi-cloud delivery</h3>
+        <p>From the core clouds (Sales, Service, Experience) through to Revenue, Data and Marketing Cloud.</p>
+      </article>
+      <article class="card">
+        {% include icon.html name="package" %}
+        <h3>Custom development &amp; managed packages</h3>
+        <p>Not just process — we build custom apps and managed packages, including our published Toolbelt for Copado.</p>
+      </article>
+    </div>
+    <div class="proof" style="margin-top:2.5rem">
+      <div><div class="proof__num">12+</div><div class="proof__label">years in the Salesforce ecosystem</div></div>
+      <div><div class="proof__num">Multi-cloud</div><div class="proof__label">delivery, from core clouds to Marketing Cloud</div></div>
+      <div><div class="proof__num">Live</div><div class="proof__label">Toolbelt product on the Copado DevOps Exchange</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services overview — Salesforce-first, Copado as one specialism -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <h2>What we do</h2>
+      <p>A Salesforce consultancy with deep DevOps expertise — release management, custom development and managed packages.</p>
+    </div>
+    <div class="grid grid--2">
+      {%- for s in site.data.services -%}
+      {%- if s.group == "salesforce" %}
+      <article class="card">
+        {% include icon.html name=s.icon %}
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.summary }}</p>
+        <a class="card__link" href="{{ '/services/' | relative_url }}#{{ s.id }}">Learn more</a>
+      </article>
+      {%- endif -%}
+      {%- endfor %}
+      <article class="card">
+        {% include icon.html name="gears" %}
+        <h3>Copado DevOps</h3>
+        <p>Specialist Copado delivery — implementation, customization, release engineering, custom app development, training and pipeline health checks.</p>
+        <a class="card__link" href="{{ '/copado/' | relative_url }}">Explore Copado services</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% include cta.html %}

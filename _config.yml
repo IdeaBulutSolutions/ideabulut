@@ -3,27 +3,88 @@
 # ----------------------- #
 
 url: https://ideabulut.com
+baseurl: ""
 title: Idea Bulut Solutions
-email: tugce@ideabulut.solutions
+tagline: Salesforce DevOps & release management
+email: info@ideabulut.com
 author: Idea Bulut Solutions
-description: > # "Write an awesome description for your new site here. 
-  Website for the Idea Bulut Solutions
-copyright: 'Copyright &copy; 2023 Idea Bulut Solutions. All Rights Reserved.'
+description: >-
+  Idea Bulut Solutions is a Salesforce consultancy with deep DevOps expertise:
+  release management, custom app development and managed packages. Based in
+  Spain and Turkey, working remotely across the EU and with US clients.
+copyright: "Idea Bulut Solutions"          # year is appended automatically in the footer
+locale: en_US
+
+# Legal / data-controller details (used in privacy policy + Organization schema)
+company:
+  legal_name: "Idea Bulut Solutions SL"    # registered legal name (Spanish SL)
+  location: "Madrid, Spain"                 # registered office of the legal entity
+  area_served: "Spain, Turkey, EU (remote), US clients"
+
+# ----------------------- #
+#     Lead capture        #
+# ----------------------- #
+# Single source of truth — short Google Calendar Appointment "Book" links (not iframe embeds).
+discovery_booking_url:    "https://calendar.app.google/BvfMMdecjp8BFb6bA"   # free 15-min Discovery Chat
+consultation_booking_url: "https://calendar.app.google/kZ3Ssu97jvKRKAMG8"   # 60-min Consultation
+
+# Contact form: deployed Google Apps Script /exec endpoint (public by design, not a secret).
+apps_script_url: "https://script.google.com/macros/s/AKfycbwOlN3zIC57nIYIDac4EZt7bwk_2Lv9K1UueuwRA9ExABqB9QKKsQZMzB39xbkryaAO5A/exec"
+# Cloudflare Turnstile SITE key is public-by-design. The SECRET key stays ONLY
+# in the Apps Script, never in this repo.
+turnstile_site_key: "0x4AAAAAADgYhvLDHRAXaskw" 
+
+# Product
+toolbelt_exchange_url: "https://success.copado.com/s/listing-detail/a545p0000008tgVAAQ/toolbelt-for-copado?language=en_US" 
 
 # ----------------------- #
 #    Jekyll & Plugins     #
 # ----------------------- #
-
-# Build settings
 markdown: kramdown
 permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - WEBSITE_REVAMP_PLAN.md
+  - Gemfile
+  - Gemfile.lock
+  - apps-script/
+  - vendor/
+  - .jekyll-cache/
 
 # ----------------------- #
 #   3rd Party Settings    #
 # ----------------------- #
+# Google Analytics 4. Paste your Measurement ID (looks like "G-XXXXXXXXXX") to switch it on.
+# While empty, no analytics load and the cookie banner stays hidden. GA4 is consent-gated:
+# it only loads after the visitor accepts analytics cookies in the banner.
+ga4_id: "G-QZS1P19693"
 
 social:
-  - title: github
-    url: https://github.com/IdeaBulutSolutions
   - title: linkedin
+    label: LinkedIn
     url: https://www.linkedin.com/company/idea-bulut-solutions
+  - title: github
+    label: GitHub
+    url: https://github.com/IdeaBulutSolutions
+
+# Primary navigation. Items may have a `children` list, rendered as a dropdown.
+nav:
+  - title: Salesforce
+    url: /services/
+    children:
+      - title: Salesforce Services
+        url: /services/
+      - title: Copado
+        url: /copado/
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/

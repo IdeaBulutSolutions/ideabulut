@@ -1,0 +1,126 @@
+# Service catalogue — single source of truth for the home overview, /services/ and /copado/.
+# `group` drives which page each service appears on: salesforce | copado | engagement.
+# Order within each group is intentional and controls render order on the pages.
+
+# ---------- Salesforce ----------
+- id: salesforce-devops
+  group: salesforce
+  icon: pipeline
+  title: "Salesforce DevOps Consultancy"
+  summary: "We bring deep DevOps expertise to your Salesforce delivery — designing pipelines, branching strategy, version control and CI/CD automation so your team ships faster and safer."
+  points:
+    - "Pipeline and environment architecture, branching strategy, Git integration"
+    - "CI/CD automation, quality gates and automated testing"
+    - "Tool-agnostic by design: Salesforce CLI, GitHub Actions, Copado or Gearset"
+
+- id: salesforce-release
+  group: salesforce
+  icon: rocket
+  title: "Salesforce Release Management"
+  summary: "We step in to own and run your Salesforce release process, implement best practices, and adapt to whatever tooling you already use, from Salesforce CLI and GitHub Actions to Copado or Gearset. We release across the full platform: core clouds (Sales, Service, Experience) through to Revenue, Data, and Marketing Cloud."
+  points:
+    - "Embedded ownership of your end-to-end release process"
+    - "Best-practice branching, environments and deployment hygiene"
+    - "Multi-cloud delivery, from core clouds to Revenue, Data and Marketing Cloud"
+
+- id: salesforce-appdev
+  group: salesforce
+  icon: cloud-code
+  title: "Salesforce App Development"
+  summary: "Custom Salesforce apps, Lightning Web Components and managed packages — including AppExchange publishing, 2GP packaging and third-party integrations."
+  points:
+    - "Custom apps and Lightning Web Components (LWC)"
+    - "Managed packages, AppExchange publishing and 2GP packaging"
+    - "API and third-party integrations"
+
+# ---------- Copado (order: release engineering, customization, app dev, health check, implementation, training) ----------
+- id: copado-release-engineering
+  group: copado
+  icon: pipeline
+  title: "Copado Release Engineering"
+  summary: "Day-to-day release operations on an existing Copado pipeline — branching, environments, deployments and troubleshooting kept healthy and moving."
+  points:
+    - "Managed DevOps and ongoing release operations"
+    - "Deployment troubleshooting and conflict resolution"
+    - "Branch, environment and pipeline maintenance"
+
+- id: copado-customization
+  group: copado
+  icon: wrench
+  title: "Copado Customization"
+  summary: "Tailor Copado to your delivery process with custom quality gates, automations and extensions that fit the way your team actually works."
+  points:
+    - "Custom quality gates, validations and automations"
+    - "Job Templates, Functions and Actions tuned to your pipeline"
+    - "Integrations with your existing toolchain"
+
+- id: copado-appdev
+  group: copado
+  icon: package
+  title: "Copado Custom App Development"
+  summary: "Custom Actions, Functions and integrations built for Copado and published to the Copado DevOps Exchange — including our own Toolbelt for Copado."
+  points:
+    - "Custom Copado Actions, Functions and Job Templates"
+    - "Extensions and integrations published to the DevOps Exchange"
+    - "Toolbelt for Copado — our published product on the DevOps Exchange"
+
+- id: copado-health
+  group: copado
+  icon: health
+  title: "Copado Pipeline Health Check"
+  summary: "A fixed-price assessment of your existing Copado pipeline — design, branching strategy, quality gates and bottlenecks — delivered as a written findings report. A low-commitment way to get expert eyes on your DevOps."
+  points:
+    - "Review of pipeline design, branching strategy and quality gates"
+    - "Bottleneck and risk analysis with prioritized recommendations"
+    - "Written findings report — a clear path into a project or retainer"
+
+- id: copado-implementation
+  group: copado
+  icon: gears
+  title: "Copado Implementation"
+  summary: "Set up Copado the right way for your team — pipelines, environments, branching strategy and Git integration configured around how you actually release."
+  points:
+    - "Pipeline, environment and branching configuration"
+    - "Git integration and CI/CD automation"
+    - "Onboarding and enablement for your team"
+
+- id: copado-training
+  group: copado
+  icon: graduation
+  title: "Copado Training"
+  summary: "Instructor-led team training and certification prep, built around real release-pipeline practice rather than slideware. Remote or on-site in Spain and the EU."
+  points:
+    - "Corporate / team training, remote or on-site (Spain & EU)"
+    - "Certification prep: Copado Fundamentals, Developer, Consultant"
+    - "Hands-on practice on real release pipelines"
+
+# ---------- Engagement models (order: project-based, release manager, support retainer) ----------
+- id: project
+  group: engagement
+  icon: cloud-code
+  title: "Project-Based Engagement"
+  summary: "A scoped, fixed-outcome project to build a custom solution or managed package. We assess your needs, scope and propose a solution, then deliver it end to end."
+  points:
+    - "Discovery and solution scoping with a clear, written proposal"
+    - "Custom solution or managed-package build, delivered end to end"
+    - "Fixed scope and milestones, with a clear path into support afterwards"
+
+- id: fractional
+  group: engagement
+  icon: clock
+  title: "Release Manager"
+  summary: "Embedded ownership of your Salesforce release process — senior release-management capacity, full-time or part-time, for as long as you need it."
+  points:
+    - "Full-time or part-time, embedded ownership of your pipeline and releases"
+    - "Best practices and continuity without a permanent hire"
+    - "Scales up or down as your delivery needs change"
+
+- id: support
+  group: engagement
+  icon: lifebuoy
+  title: "Support & Retainer"
+  summary: "A monthly hours-block retainer for deployment troubleshooting and release support — tool-agnostic, with fast unblocking when a release breaks."
+  points:
+    - "Monthly hours-block bundles (10 / 20 / 40 hrs per month)"
+    - "Deployment troubleshooting and release support"
+    - "Tool-agnostic: Salesforce CLI, GitHub Actions, Copado or Gearset"

@@ -1,28 +1,85 @@
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.description }}">
-    <meta name="author" content="{{ site.author }}">
+  {%- comment -%} ---- Per-page title & description (hand-rolled SEO; no plugin) ---- {%- endcomment -%}
+  {%- if page.title and page.title != site.title -%}
+    {%- capture full_title -%}{{ page.title }} | {{ site.title }}{%- endcapture -%}
+  {%- else -%}
+    {%- capture full_title -%}{{ site.title }} — {{ site.tagline }}{%- endcapture -%}
+  {%- endif -%}
+  {%- assign page_desc = page.description | default: site.description | strip_newlines | strip -%}
+  {%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
+  {%- assign og_image = page.image | default: "/img/ideabulut-logo.png" | absolute_url -%}
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ page_desc | escape }}">
+  <meta name="author" content="{{ site.author }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- if page.noindex %}
+  <meta name="robots" content="noindex, follow">
+  {%- endif %}
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ full_title | escape }}">
+  <meta property="og:description" content="{{ page_desc | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:locale" content="{{ site.locale }}">
 
-    <!-- Custom CSS -->
-    <link href="css/landing-page.css" rel="stylesheet">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ full_title | escape }}">
+  <meta name="twitter:description" content="{{ page_desc | escape }}">
+  <meta name="twitter:image" content="{{ og_image }}">
 
-    <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
 
+  <!-- Favicon -->
+  <link rel="icon" href="{{ '/img/ideabulut-logo.png' | relative_url }}">
+
+  {%- comment -%} ---- Site-wide Organization / ProfessionalService schema ---- {%- endcomment -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": {{ site.company.legal_name | default: site.title | jsonify }},
+    "alternateName": {{ site.title | jsonify }},
+    "url": {{ site.url | append: "/" | jsonify }},
+    "logo": {{ "/img/ideabulut-logo.png" | absolute_url | jsonify }},
+    "image": {{ "/img/ideabulut-logo.png" | absolute_url | jsonify }},
+    "email": {{ site.email | jsonify }},
+    "description": {{ site.description | strip_newlines | strip | jsonify }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madrid",
+      "addressCountry": "ES"
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Spain" },
+      { "@type": "Place", "name": "European Union" },
+      { "@type": "Country", "name": "Turkey" },
+      { "@type": "Country", "name": "United States" }
+    ],
+    "sameAs": [
+      {%- for s in site.social -%}
+      {{ s.url | jsonify }}{%- unless forloop.last %},{% endunless -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+
+  {%- comment -%} ---- Optional per-page JSON-LD (FAQ, Course, etc.) ---- {%- endcomment -%}
+  {%- if page.jsonld %}
+  <script type="application/ld+json">{{ page.jsonld }}</script>
+  {%- endif %}
 </head>

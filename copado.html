@@ -1,0 +1,73 @@
+---
+layout: default
+title: Copado
+permalink: /copado/
+description: "Specialist Copado delivery from Idea Bulut Solutions — implementation, customization, release engineering, custom app development, training and a fixed-price pipeline health check. Copado Technical Partner, publishing to the DevOps Exchange."
+jsonld: >
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Are you a Copado implementation partner?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We are a Copado Technical Partner, the ISV tier that builds on the platform and publishes to the Copado DevOps Exchange. Copado implementation is something we deliver as a service, not a partner-status claim." } },
+      { "@type": "Question", "name": "Can you take over an existing Copado pipeline?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We pick up existing pipelines for release engineering, troubleshooting and managed DevOps, as well as setting up Copado from scratch." } },
+      { "@type": "Question", "name": "Do you offer Copado training?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We run instructor-led team training and certification prep (Copado Fundamentals, Developer, Consultant), remote or on-site in Spain and the EU, built around real release-pipeline practice." } }
+    ]
+  }
+---
+
+<header class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Copado</span>
+    <h1>Specialist Copado delivery</h1>
+    <p class="page-hero__subtitle">From implementation and customization to day-to-day release engineering, custom app development, training and a fixed-price pipeline health check.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="{% if site.discovery_booking_url != '' %}{{ site.discovery_booking_url }}{% else %}{{ '/contact/' | relative_url }}{% endif %}"{% if site.discovery_booking_url != '' %} target="_blank" rel="noopener"{% endif %}>Book a free 15-min chat</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid--2">
+      {%- for s in site.data.services -%}
+      {%- if s.group == "copado" %}
+      <article class="card" id="{{ s.id }}">
+        {% include icon.html name=s.icon %}
+        <h2 style="font-size:1.4rem">{{ s.title }}</h2>
+        <p>{{ s.summary }}</p>
+        <ul>
+          {%- for p in s.points %}
+          <li>{{ p }}</li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endif -%}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="section__head"><h2>Copado FAQ</h2></div>
+    <div class="faq">
+      <details class="faq__item">
+        <summary>Are you a Copado implementation partner?</summary>
+        <p>We are a <strong>Copado Technical Partner</strong> (the ISV tier that builds on the platform and publishes to the DevOps Exchange). Copado implementation is something we deliver as a service, not a partner-status claim.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Can you take over an existing Copado pipeline?</summary>
+        <p>Yes. We pick up existing pipelines for release engineering, deployment troubleshooting and managed DevOps — as well as setting Copado up from scratch.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you offer Copado training?</summary>
+        <p>Yes — instructor-led team training and certification prep (Copado Fundamentals, Developer, Consultant), remote or on-site in Spain and the EU, built around real release-pipeline practice rather than slideware.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+{% include cta.html heading="Need help with Copado?" text="Book a free 15-minute Discovery Chat. Tell us what's blocking your releases and we'll tell you honestly whether — and how — we can help." %}

@@ -1,0 +1,15 @@
+CLAUDE.md
+WEBSITE_REVAMP_PLAN.md
+
+# Jekyll build output & local tooling
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+Gemfile.lock
+
+# OS cruft
+.DS_Store
+apps-script/Code.gs
+apps-script/README.md

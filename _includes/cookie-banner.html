@@ -1,0 +1,15 @@
+{%- comment -%}
+  Consent-gated cookie banner for Google Analytics 4.
+  Only rendered when `ga4_id` is set in _config.yml. GA4 is loaded by js/site.js
+  ONLY after the visitor clicks Accept; the choice is remembered in localStorage.
+{%- endcomment -%}
+{%- if site.ga4_id and site.ga4_id != "" -%}
+<script>window.IB_GA4_ID = "{{ site.ga4_id }}";</script>
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite" hidden>
+  <p class="cookie-banner__text">We use Google Analytics to understand how this site is used. Analytics cookies are only set if you accept. See our <a href="{{ '/privacy-policy/' | relative_url }}">privacy policy</a>.</p>
+  <div class="cookie-banner__actions">
+    <button type="button" class="btn btn--ghost" id="cookie-decline">Decline</button>
+    <button type="button" class="btn btn--primary" id="cookie-accept">Accept</button>
+  </div>
+</div>
+{%- endif -%}
