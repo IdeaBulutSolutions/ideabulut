@@ -11,7 +11,7 @@
   {%- endif -%}
   {%- assign page_desc = page.description | default: site.description | strip_newlines | strip -%}
   {%- assign canonical = page.url | replace: "index.html", "" | absolute_url -%}
-  {%- assign og_image = page.image | default: "/img/ideabulut-logo.png" | absolute_url -%}
+  {%- assign og_image = page.image | default: "/img/og-image.png" | absolute_url -%}
 
   <title>{{ full_title }}</title>
   <meta name="description" content="{{ page_desc | escape }}">
@@ -45,7 +45,12 @@
   <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
 
   <!-- Favicon -->
-  <link rel="icon" href="{{ '/img/ideabulut-logo.png' | relative_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="{{ '/img/favicon.svg' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/img/favicon-32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/img/favicon-16.png' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/img/apple-touch-icon.png' | relative_url }}">
+  <meta name="theme-color" content="#090045">
 
   {%- comment -%} ---- Site-wide Organization / ProfessionalService schema ---- {%- endcomment -%}
   <script type="application/ld+json">
@@ -55,8 +60,8 @@
     "name": {{ site.company.legal_name | default: site.title | jsonify }},
     "alternateName": {{ site.title | jsonify }},
     "url": {{ site.url | append: "/" | jsonify }},
-    "logo": {{ "/img/ideabulut-logo.png" | absolute_url | jsonify }},
-    "image": {{ "/img/ideabulut-logo.png" | absolute_url | jsonify }},
+    "logo": {{ "/img/logo.png" | absolute_url | jsonify }},
+    "image": {{ "/img/og-image.png" | absolute_url | jsonify }},
     "email": {{ site.email | jsonify }},
     "description": {{ site.description | strip_newlines | strip | jsonify }},
     "address": {
