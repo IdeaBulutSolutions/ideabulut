@@ -1,8 +1,23 @@
-# Idea Bulut Solutions — website
+# Idea Bulut Solutions website
 
-Marketing website for **Idea Bulut Solutions**, a Salesforce consultancy with deep
-DevOps expertise (release management, custom app development and managed packages),
-based in Madrid and working across Spain, the EU, Turkey and US timezones.
+Source for [ideabulut.com](https://ideabulut.com), built with Next.js.
 
-The site is a [Jekyll](https://jekyllrb.com/) static site deployed to **GitHub Pages**
-at **[ideabulut.com](https://ideabulut.com)** (custom domain via `CNAME`).
+## Development
+
+Requires Node.js 24 (see `.nvmrc`).
+
+```sh
+npm ci
+npm run dev        # http://localhost:3000
+npm run build      # static site in out/
+npm start          # preview out/
+```
+
+## Content
+
+- Blog posts: `content/blog/` (start from `_template.md`, or `npm run new:post "Title"`)
+- Products: `content/products/` (start from `_template.md`, or `npm run new:product "Name"`)
+- Images: `public/images/`
+- Site settings and navigation: `src/config/`
+
+Run `npm run check:content` before committing. Pushing to `main` publishes the site.

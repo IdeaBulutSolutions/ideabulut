@@ -1,0 +1,11 @@
+import type { FaqItem } from '@/lib/content/schemas';
+
+export const salesforceDevopsFaq: readonly FaqItem[] = [
+  { question: 'What is Salesforce DevOps?', answer: 'Salesforce DevOps is the practice of moving changes from development to production in a controlled, automated way. It combines version control, sandbox strategy, automated validation and a clear release process, so every metadata change follows the same path and releases become predictable.' },
+  { question: 'What does a Salesforce release pipeline include?', answer: 'A typical pipeline covers a Git repository, a defined path through your sandboxes, automated validation and testing, promotion rules and approvals, and a release process your whole team can see. We design each part around your team and your governance needs, then build it in Copado, GitHub Actions or both.' },
+  { question: 'Should we use Copado or GitHub Actions for Salesforce DevOps?', answer: 'They do different jobs. Copado brings structure: pipelines, promotion, governance and visibility. GitHub Actions brings flexibility: custom automation and CI checks. Many Salesforce teams use both, and we design the split around your team size, governance needs and the tools you already use.' },
+  { question: 'Can you implement or improve our Copado setup?', answer: 'Yes, both. We implement Copado for teams starting out, configured around your orgs, teams and process. If Copado is already running, we optimise it, so deployments become faster, more consistent and easier to maintain.' },
+  { question: 'Can you work with our existing sandboxes and Git repository?', answer: "Yes. We start by mapping your current pipeline, environments and release process, then build on what already works. You don't need to start again." },
+  { question: 'How long does a Copado implementation take?', answer: 'It depends on your team size, number of environments and governance needs. We scope it in a free 15-minute discovery call, and you leave with clear next steps.' },
+  { question: 'Can our team run the pipeline on its own after handover?', answer: 'Yes. That is the goal of every engagement. We hand over documentation, runbooks and training, so your team runs releases confidently without us.' },
+];
