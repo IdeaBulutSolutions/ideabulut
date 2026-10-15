@@ -1,15 +1,22 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+*.pem
+*.key
+*debug.log*
+.DS_Store
+Thumbs.db
+
+# Local-only files (not part of the site)
+# local/ holds personal reference files (e.g. the website guide PDF) that stay on this machine
+local/
 CLAUDE.md
 WEBSITE_REVAMP_PLAN.md
-
-# Jekyll build output & local tooling
-_site/
-.jekyll-cache/
-.jekyll-metadata
-.sass-cache/
-vendor/
-Gemfile.lock
-
-# OS cruft
-.DS_Store
+# Apps Script backend holds secrets — keep out of the repo
 apps-script/Code.gs
 apps-script/README.md

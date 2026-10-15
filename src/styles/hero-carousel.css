@@ -1,0 +1,7 @@
+.hero-carousel { width: 100%; min-width: 0; }
+.hero-carousel-controls .home-product-arrow { color: rgb(160 196 255 / 45%); }
+.hero-carousel-controls .home-product-arrow:hover { color: rgb(160 196 255 / 75%); }
+.hero-carousel-controls .home-product-dot::before { background: rgb(160 196 255 / 25%); }
+.hero-carousel-controls .home-product-dot[aria-current="true"]::before { background: rgb(160 196 255 / 65%); }
+.hero-carousel-controls .home-product-arrow:focus-visible,
+.hero-carousel-controls .home-product-dot:focus-visible { outline-color: var(--light-blue); }
