@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { HTMLAttributes } from 'react';
 import { BrandButton } from '@/components/ui/brand-button';
 import type { ProductContent } from '@/lib/content/schemas';
+import { withReferral } from '@/lib/referral';
 
 type Props = HTMLAttributes<HTMLElement> & { product: ProductContent; variant?: 'full' | 'compact'; inert?: boolean };
 
@@ -12,7 +13,7 @@ export function ProductCard({ product, variant = 'full', className = '', ...prop
     <span className="product-symbol"><Image src={product.icon} alt="" width={compact ? 60 : 54} height={compact ? 60 : 54} sizes="60px" /></span>
     <div><h3>{product.hasPage ? <Link href={`/products/${product.slug}`}>{product.name}</Link> : product.name}</h3><p>by {product.brand}</p></div>
   </div>;
-  const button = <BrandButton href={product.cta.href} external={product.cta.external} arrow>{product.cta.label}</BrandButton>;
+  const button = <BrandButton href={product.cta.external ? withReferral(product.cta.href, compact ? 'home' : 'products') : product.cta.href} external={product.cta.external} arrow>{product.cta.label}</BrandButton>;
 
   if (compact) return <article className={`product-card ${className}`} {...props}>
     <div className="product-top">{identity}{product.tags[0] && <span className="free-tag">{product.tags[0]}</span>}</div>

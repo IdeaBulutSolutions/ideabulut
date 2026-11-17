@@ -24,6 +24,18 @@
 .contact-form-panel .contact-consent input { flex: none; width: 18px; min-height: 0; height: 18px; margin: 3px 0 0; padding: 0; accent-color: var(--blue); }
 .contact-form-panel .contact-opt-in { margin-top: 12px; }
 .contact-consent a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+.contact-success { margin-top: 28px; padding: clamp(24px, 3vw, 36px); border: 1px solid var(--line); border-radius: var(--radius-tile); background: var(--soft); animation: contact-success-in .4s ease both; }
+.contact-success-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--radius-circle); background: var(--blue); color: var(--white); }
+.contact-success-icon svg { width: 28px; height: 28px; }
+.contact-success h3 { margin: 20px 0 10px; color: var(--navy); font: 600 clamp(21px, 2.2vw, 26px)/1.25 var(--font-display); letter-spacing: -.015em; outline: none; }
+.contact-success p { margin: 0; color: var(--ink); font-size: 16px; line-height: 1.6; overflow-wrap: anywhere; }
+.contact-success strong { color: var(--navy); }
+.contact-success .contact-success-next { margin-top: 14px; color: var(--muted); font-size: 15px; }
+.contact-form-panel .contact-success .brand-button { margin-top: 0; }
+.contact-success-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+.contact-success-again { padding: 0; border: 0; background: none; color: var(--blue); font: 600 15px/1.2 var(--font-display); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.contact-success-again:hover { color: var(--blue-hover); }
+@keyframes contact-success-in { from { opacity: 0; transform: translateY(8px); } }
 .contact-status { min-height: 1.6em; margin: 16px 0 0; color: var(--navy); font-size: 14px; font-weight: 600; line-height: 1.6; }
 .contact-status.is-error { color: #b42318; }
 .contact-status a { text-decoration: underline; text-underline-offset: 3px; }

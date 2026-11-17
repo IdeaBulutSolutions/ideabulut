@@ -15,8 +15,8 @@ export const cookieConsent = {
   alwaysOn: 'Always active',
   necessary: { name: 'Strictly necessary', description: 'Required for the website to work, such as spam protection on forms and remembering your cookie choices.' },
   categories: {
-    analytics: { name: 'Analytics', description: 'Help us understand how visitors use the website so we can improve it.' },
-    marketing: { name: 'Marketing', description: 'Help us understand which services interest you so we can follow up more relevantly.' },
+    analytics: { name: 'Analytics', description: 'Used to understand how visitors use the website, so we can improve it.' },
+    marketing: { name: 'Marketing', description: 'Used to understand which services interest you, so our follow-up is more relevant.' },
   },
   settings: 'Cookie settings',
 } as const;

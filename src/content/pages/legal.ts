@@ -23,7 +23,7 @@ We collect what you give us and, only with your consent, how you use the site:
 - **Booking a call:** when you book a discovery call, the booking is handled by Google Calendar appointment scheduling, which collects the details you enter (such as name and email) to schedule the meeting and generate a Google Meet link.
 - **Website usage (only if you accept cookies):** pages you visit, how you arrived, and device and browser details, collected by Google Analytics (analytics cookies) and Salesforce Account Engagement (marketing cookies). See section 7.
 
-We do **not** run third-party advertising networks, and we don't sell or share your data with others for their marketing.
+We do **not** use third-party advertising networks, and we don't sell your data or share it with others for their marketing.
 
 ## 3. Why we use it, and the legal basis
 We use your data to **respond to your enquiry**, arrange any call you request, send marketing emails **only if you opt in**, and, if you accept cookies, understand how the site is used and which services interest you.
@@ -69,7 +69,7 @@ export const termsOfService: LegalDocumentContent = {
 By using this website you agree to these Terms. If you do not agree, please do not use the website.
 
 ## 2. About us
-This website is operated by **${siteConfig.legalName}**:
+This website is operated by **${siteConfig.legalName}**, a company registered in Spain:
 
 - **Registered office:** ${formatAddress()}
 - **Tax ID (CIF):** ${siteConfig.taxId}

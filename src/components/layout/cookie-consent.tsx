@@ -93,8 +93,14 @@ function stopAnalytics() {
 // Salesforce Account Engagement (Pardot): the vendor snippet, loaded on consent instead of on page load.
 // pd.js records the page it loads on; later client-side navigations are sent from CookieConsent.
 const pardotScriptId = 'pardot-tracking';
+// pd.js names its cookies after the account ID minus 1000 (visitor_id…, pi_opt_in…).
+const pardotCookieSuffix = Number(pardot.accountId) - 1000;
 let pardotActive = false;
 function loadPardot() {
+  // The visitor has just opted in through our banner. Recording that in Pardot's own opt-in cookie
+  // stops Account Engagement from showing its "May we use cookies…" bar as a second question.
+  const secure = location.protocol === 'https:' ? '; Secure' : '';
+  document.cookie = `pi_opt_in${pardotCookieSuffix}=true; Max-Age=${consentMaxAge / 1000}; path=/; SameSite=Lax${secure}`;
   // Consent given again after being withdrawn on this page: pd.js is already loaded, so record the page here.
   if (document.getElementById(pardotScriptId)) { if (!pardotActive) window.piTracker?.(location.href); pardotActive = true; return; }
   pardotActive = true;
@@ -114,8 +120,7 @@ function stopPardot() {
   deleteCookies(name => /^(visitor_id|pi_opt_in|lpv|pardot)/.test(name));
 }
 
-// pd.js names its visitor cookie after the account ID minus 1000.
-const pardotVisitorCookie = `visitor_id${Number(pardot.accountId) - 1000}`;
+const pardotVisitorCookie = `visitor_id${pardotCookieSuffix}`;
 /** Pardot visitor cookie values, sent with the contact form so the lead is linked to the pages they viewed. Empty without marketing consent. */
 export function pardotVisitorFields(): Record<string, string> {
   if (!pardot.accountId || !readConsent().consent.marketing) return {};

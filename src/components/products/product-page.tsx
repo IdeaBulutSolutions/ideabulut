@@ -6,6 +6,7 @@ import { BrandButton } from '@/components/ui/brand-button';
 import { Faq } from '@/components/sections/faq';
 import { BlogMarkdown } from '@/components/blog/blog-markdown';
 import { softwareSchema } from '@/lib/seo/structured-data';
+import { withReferral } from '@/lib/referral';
 import type { ProductContent } from '@/lib/content/schemas';
 
 export function ProductPage({ product }: { product: ProductContent }) {
@@ -15,7 +16,7 @@ export function ProductPage({ product }: { product: ProductContent }) {
       <div><Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Products', href: '/products' }]} current={product.name} />
         <h1>{product.name}</h1><p>by {product.brand}</p><p className="cp-hero-sub">{product.description}</p>
         <div className="cp-product-meta">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-        <BrandButton href={product.cta.href} external={product.cta.external} arrow>{product.cta.label}</BrandButton>
+        <BrandButton href={product.cta.external ? withReferral(product.cta.href, 'product-page') : product.cta.href} external={product.cta.external} arrow>{product.cta.label}</BrandButton>
       </div>
       <Image src={product.visual} alt={product.visualAlt} width={product.visualWidth} height={product.visualHeight} priority sizes="(min-width: 850px) 450px, 90vw" style={{ maxWidth: '100%', height: 'auto' }} />
     </div></header>
