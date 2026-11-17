@@ -11,7 +11,8 @@ export const organizationSchema: JsonLdNode = {
   description: siteConfig.defaultDescription, areaServed: siteConfig.areaServed,
   sameAs: Object.values(siteConfig.socialProfiles).filter(Boolean),
   ...(siteConfig.legalName ? { legalName: siteConfig.legalName } : {}),
-  ...(siteConfig.registeredAddress ? { address: siteConfig.registeredAddress } : {}),
+  ...(siteConfig.taxId ? { taxID: siteConfig.taxId } : {}),
+  address: { '@type': 'PostalAddress', ...siteConfig.registeredAddress },
   ...(siteConfig.telephone ? { telephone: siteConfig.telephone } : {}),
   ...(siteConfig.contactEmail ? { contactPoint: { '@type': 'ContactPoint', contactType: 'customer enquiries', email: siteConfig.contactEmail } } : {}),
 };

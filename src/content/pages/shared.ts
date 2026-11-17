@@ -5,10 +5,18 @@ export const innerCta = {
   href: '/book-a-call',
 } as const;
 export const cookieConsent = {
-  label: 'Cookie consent',
-  text: 'We use Google Analytics to understand how this site is used. Analytics cookies are only set if you accept. See our',
-  privacyLink: 'Privacy Policy.',
-  accept: 'Accept',
-  decline: 'Decline',
+  title: 'We use cookies',
+  text: 'We use our own and third-party cookies to understand how our website is used and to make our marketing more relevant. Learn more in our',
+  privacyLink: 'Privacy Policy',
+  acceptAll: 'Accept all',
+  rejectAll: 'Reject all',
+  customize: 'Manage preferences',
+  save: 'Save preferences',
+  alwaysOn: 'Always active',
+  necessary: { name: 'Strictly necessary', description: 'Required for the website to work, such as spam protection on forms and remembering your cookie choices.' },
+  categories: {
+    analytics: { name: 'Analytics', description: 'Help us understand how visitors use the website so we can improve it.' },
+    marketing: { name: 'Marketing', description: 'Help us understand which services interest you so we can follow up more relevantly.' },
+  },
   settings: 'Cookie settings',
 } as const;

@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 const text = z.string().trim().min(1);
-const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD').refine(
+// abort: a malformed date reports only the format error, not also "Use a real calendar date".
+const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { error: 'Use YYYY-MM-DD', abort: true }).refine(
   value => !Number.isNaN(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value,
   'Use a real calendar date',
 );

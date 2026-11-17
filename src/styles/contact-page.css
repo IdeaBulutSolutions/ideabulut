@@ -13,6 +13,7 @@
 .contact-form-panel label { display: flex; flex-direction: column; gap: 9px; color: var(--navy); font: 600 13px/1.3 var(--font-display); }
 .contact-form-panel input, .contact-form-panel select, .contact-form-panel textarea { width: 100%; min-height: 50px; padding: 13px 15px; border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--white); color: var(--ink); font: 500 15px/1.45 var(--font-body); }
 .contact-form-panel textarea { resize: vertical; min-height: 138px; }
+.contact-field-wide { grid-column: 1 / -1; }
 .contact-message-field { margin-top: 20px; }
 .contact-form-panel .brand-button { margin-top: 24px; border: 0; cursor: pointer; }
 .contact-form-panel .brand-button:disabled { cursor: progress; opacity: .58; }
@@ -21,6 +22,7 @@
 .contact-turnstile:empty { min-height: 0; }
 .contact-form-panel .contact-consent { flex-direction: row; align-items: flex-start; gap: 12px; margin-top: 20px; color: var(--ink); font: 500 14px/1.55 var(--font-body); }
 .contact-form-panel .contact-consent input { flex: none; width: 18px; min-height: 0; height: 18px; margin: 3px 0 0; padding: 0; accent-color: var(--blue); }
+.contact-form-panel .contact-opt-in { margin-top: 12px; }
 .contact-consent a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .contact-status { min-height: 1.6em; margin: 16px 0 0; color: var(--navy); font-size: 14px; font-weight: 600; line-height: 1.6; }
 .contact-status.is-error { color: #b42318; }
