@@ -56,10 +56,6 @@ function saveConsent(consent: Consent) {
   } catch { /* storage blocked: ask again next visit */ }
 }
 
-function readCookie(name: string): string {
-  const match = document.cookie.split('; ').find(cookie => cookie.startsWith(`${name}=`));
-  return match ? decodeURIComponent(match.slice(name.length + 1)) : '';
-}
 function deleteCookies(matches: (name: string) => boolean) {
   const domain = location.hostname.replace(/^www\./, '');
   for (const cookie of document.cookie.split(';')) {
@@ -120,13 +116,9 @@ function stopPardot() {
   deleteCookies(name => /^(visitor_id|pi_opt_in|lpv|pardot)/.test(name));
 }
 
-const pardotVisitorCookie = `visitor_id${pardotCookieSuffix}`;
-/** Pardot visitor cookie values, sent with the contact form so the lead is linked to the pages they viewed. Empty without marketing consent. */
-export function pardotVisitorFields(): Record<string, string> {
-  if (!pardot.accountId || !readConsent().consent.marketing) return {};
-  const id = readCookie(pardotVisitorCookie);
-  const hash = readCookie(`${pardotVisitorCookie}-hash`);
-  return id && hash ? { pi_visitor_id: id, pi_visitor_id_hash: hash } : {};
+/** Whether the visitor has accepted marketing cookies, so the contact form may also post to Pardot from the browser. */
+export function hasMarketingConsent(): boolean {
+  return Boolean(pardot.accountId) && readConsent().consent.marketing;
 }
 
 function applyConsent(consent: Consent) {
