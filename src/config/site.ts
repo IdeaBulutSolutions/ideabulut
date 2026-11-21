@@ -23,6 +23,8 @@ export type SiteConfig = {
   ga4Id: string;
   /** Salesforce Account Engagement (Pardot) tracking. Loaded only after the visitor accepts marketing cookies; empty accountId disables it. */
   pardot: { accountId: string; campaignId: string; trackerHost: string };
+  /** Pardot Form Handler "Idea Bulut Website - Contact Us". With marketing consent the contact form also posts here from the browser, so the lead is linked to the pages they viewed; empty disables that. */
+  pardotFormHandlerUrl: string;
 };
 
 function siteOrigin(value: string): string {
@@ -51,6 +53,7 @@ export const siteConfig: SiteConfig = {
   turnstileSiteKey: '0x4AAAAAADgYhvLDHRAXaskw',
   ga4Id: 'G-QZS1P19693',
   pardot: { accountId: '1135371', campaignId: '130455', trackerHost: 'go.ideabulut.com' },
+  pardotFormHandlerUrl: 'https://go.ideabulut.com/l/1134371/2026-11-17/3hjvgp',
 };
 
 /** One-line registered address, e.g. for legal pages. Pass `withCountry: false` for a shorter form. */

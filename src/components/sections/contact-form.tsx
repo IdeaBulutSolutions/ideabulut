@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Script from 'next/script';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { pardotVisitorFields } from '@/components/layout/cookie-consent';
+import { hasMarketingConsent } from '@/components/layout/cookie-consent';
 import { siteConfig } from '@/config/site';
 import { contactPage as copy } from '@/content/pages/contact';
 import { innerCta } from '@/content/pages/shared';
@@ -11,10 +11,30 @@ import { innerCta } from '@/content/pages/shared';
 type Turnstile = { render: (element: HTMLElement, options: { sitekey: string }) => string; reset: (id: string) => void; remove: (id: string) => void };
 declare global { interface Window { turnstile?: Turnstile } }
 
+// The Form Handler's external field names. Best-effort: what the visitor is told never depends on it.
+// A no-cors request must follow redirects, so the Form Handler's redirect back to this page is fetched too.
+// keepalive lets the post finish if the visitor leaves right after the confirmation.
+function postToPardot(data: FormData) {
+  const field = (name: string) => String(data.get(name) ?? '');
+  const body = new URLSearchParams({
+    email: field('email'),
+    first_name: field('first_name'),
+    last_name: field('last_name'),
+    company: field('company'),
+    area_of_interest: field('service'),
+    comments: field('message'),
+  });
+  // Same as the Apps Script forward: opt-in is only ever set, never cleared by an unticked box.
+  if (data.get('marketing_opt_in') === 'yes') body.set('marketing_opt_in', 'true');
+  fetch(siteConfig.pardotFormHandlerUrl, { method: 'POST', mode: 'no-cors', credentials: 'include', keepalive: true, body }).catch(() => {});
+}
+
 // Posts to the Google Apps Script Web App (apps-script/Code.gs). Field names must match its
 // ALLOWED list: first_name, last_name, email, company, service, message, consent, marketing_opt_in. `website` is a
-// honeypot, Turnstile adds `cf-turnstile-response` inside its container, and with marketing consent
-// the Pardot visitor cookie is added so Apps Script can link the lead to the pages they viewed.
+// honeypot and Turnstile adds `cf-turnstile-response` inside its container.
+// With marketing consent the form also posts to the Pardot Form Handler from the browser: only a post
+// that carries the visitor's Pardot cookie links the lead to the pages they viewed, and Apps Script's
+// own forward runs on its server. `pardot=browser` tells Apps Script to skip that forward.
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const widget = useRef<HTMLDivElement>(null);
@@ -46,8 +66,11 @@ export function ContactForm() {
       // no-cors and the response is opaque: a resolved request counts as sent. A server-side
       // rejection (e.g. Turnstile secret mismatch) is invisible here and drops the lead.
       const data = new FormData(form);
-      for (const [field, value] of Object.entries(pardotVisitorFields())) data.set(field, value);
+      // A filled honeypot is a bot: Apps Script drops it, and so does the Pardot post.
+      const toPardot = Boolean(siteConfig.pardotFormHandlerUrl) && !data.get('website') && hasMarketingConsent();
+      if (toPardot) data.set('pardot', 'browser');
       await fetch(siteConfig.appsScriptUrl, { method: 'POST', mode: 'no-cors', body: data });
+      if (toPardot) postToPardot(data);
       // The form (and the Turnstile container inside it) is replaced by the confirmation.
       if (widgetId.current) window.turnstile?.remove(widgetId.current);
       widgetId.current = null;
