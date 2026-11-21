@@ -13,6 +13,7 @@ declare global { interface Window { turnstile?: Turnstile } }
 
 // The Form Handler's external field names. Best-effort: what the visitor is told never depends on it.
 // A no-cors request must follow redirects, so the Form Handler's redirect back to this page is fetched too.
+// keepalive lets the post finish if the visitor leaves right after the confirmation.
 function postToPardot(data: FormData) {
   const field = (name: string) => String(data.get(name) ?? '');
   const body = new URLSearchParams({
@@ -23,8 +24,9 @@ function postToPardot(data: FormData) {
     area_of_interest: field('service'),
     comments: field('message'),
   });
-  if (data.get('marketing_opt_in')) body.set('Marketing Opt In', field('marketing_opt_in'));
-  fetch(siteConfig.pardotFormHandlerUrl, { method: 'POST', mode: 'no-cors', credentials: 'include', body }).catch(() => {});
+  // Same as the Apps Script forward: opt-in is only ever set, never cleared by an unticked box.
+  if (data.get('marketing_opt_in') === 'yes') body.set('marketing_opt_in', 'true');
+  fetch(siteConfig.pardotFormHandlerUrl, { method: 'POST', mode: 'no-cors', credentials: 'include', keepalive: true, body }).catch(() => {});
 }
 
 // Posts to the Google Apps Script Web App (apps-script/Code.gs). Field names must match its
